@@ -3,8 +3,7 @@ AEROFLOT::AEROFLOT() : flightNumber(0) {
     std::cout << "Default constructor called for AEROFLOT." << std::endl;
 }
 
-AEROFLOT::AEROFLOT(const std::string& destination, int flightNumber, const std::string& aircraftType)
-    : destination(destination), flightNumber(flightNumber), aircraftType(aircraftType) {
+AEROFLOT::AEROFLOT(const std::string& destination, int flightNumber, const std::string& aircraftType): destination(destination), flightNumber(flightNumber), aircraftType(aircraftType) {
     std::cout << "Parameterized constructor called for AEROFLOT." << std::endl;
 }
 
