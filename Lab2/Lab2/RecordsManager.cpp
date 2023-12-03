@@ -17,7 +17,7 @@ void RecordsManager::addRecord(const AEROFLOT& record) {
 }
 
 void RecordsManager::sortRecords() {
-    // Используем сортировку пузырьком для простоты (вы можете выбрать более эффективный алгоритм)
+    // Используем сортировку пузырьком
     for (int i = 0; i < size - 1; ++i) {
         for (int j = 0; j < size - i - 1; ++j) {
             if (records[j].getFlightNumber() > records[j + 1].getFlightNumber()) {

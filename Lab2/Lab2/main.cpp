@@ -9,15 +9,16 @@
 #include "FileManager.h"
 
 int main() {
+    setlocale(LC_ALL, "Russian");
     int choice;
     do {
-        std::cout << "\nMenu:\n1. Task 1 - Menedzher po deloproizvodstvu Aeroporta\n2. Task 2 - Clova, nachinaychie s glasnih\n3. Exit\n";
-        std::cout << "Enter your choice: ";
+        std::cout << "\nMеню:\n1. Задание 1 - Аэрофлот\n2. Задание 2 - Слова, начинающиеся с гласной буквы\n3. Выход\n";
+        std::cout << "Введите команду: ";
         std::cin >> choice;
 
         switch (choice) {
         case 1: {
-            std::cout << "Dobro pojalovat v Menedzher po deloproizvodstvu Aeroporta!\n" << std::endl;
+           // std::cout << "Dobro pojalovat v Menedzher po deloproizvodstvu Aeroporta!\n" << std::endl;
 
             RecordsManager recordsManager;
 
@@ -27,9 +28,9 @@ int main() {
             testManager.addRecord(testRecord);
             int choice;
             do {
-                std::cout << "\nMenu:\n1. Vvesti dannie\n2. Sortirovat dannie\n3. Vivesti zapisi po mestu naznachenia\n"
-                    "4. Sohranit v fail\n5. Zagruzit iz faila\n6. Exit\n";
-                std::cout << "Enter your choice: ";
+                std::cout << "\nMеню:\n1. Ввести данные\n2. Сортировать данные\n3. Вывисти записи по месту назначения\n"
+                    "4. Сохранить в фаил\n5. Загрузить из файла\n6. Выйти\n";
+                std::cout << "Введите команду: ";
                 std::cin >> choice;
 
                 switch (choice) {
@@ -38,13 +39,13 @@ int main() {
                     int flightNumber;
                     std::string aircraftType;
 
-                    std::cout << "Vvedite punkt naznachenia: ";
+                    std::cout << "Введите пунк назначения: ";
                     std::cin >> destination;
 
-                    std::cout << "Vvedite nimer reisa: ";
+                    std::cout << "Введите номер рейса: ";
                     std::cin >> flightNumber;
 
-                    std::cout << "Vvedite tip samoleta: ";
+                    std::cout << "Введите тип самолета: ";
                     std::cin >> aircraftType;
 
                     AEROFLOT newRecord(destination, flightNumber, aircraftType);
@@ -53,26 +54,26 @@ int main() {
                 }
                 case 2:
                     recordsManager.sortRecords();
-                    std::cout << "Dannie otsortirovani po nomeru reisa." << std::endl;
+                    std::cout << "Данные осортированы по номеру рейса." << std::endl;
                     break;
                 case 3: {
                     std::string searchDestination;
-                    std::cout << "Vvedite punkt naznachenia dlya poiska: ";
+                    std::cout << "Введите пунк назначения для поиска: ";
                     std::cin >> searchDestination;
                     recordsManager.displayRecordsByDestination(searchDestination);
                     break;
                 }
                 case 4:
                     FileManager::writeToFile(recordsManager, "records.txt");
-                    std::cout << "Dannie sohraneni v fail 'records.txt'." << std::endl;
+                    std::cout << "Данные сохранены в фаил 'records.txt'." << std::endl;
                     break;
                 case 5:
                     recordsManager = RecordsManager(); // Очищаем текущие записи
                     FileManager::readFromFile(recordsManager, "records.txt");
-                    std::cout << "Dannie zagrujeni s faila 'records.txt'." << std::endl;
+                    std::cout << "Данные загружены из файла 'records.txt'." << std::endl;
                     break;
                 case 6:
-                    std::cout << "Exiting the program. Goodbye!" << std::endl;
+                    std::cout << "Выход!" << std::endl;
                     break;
                 default:
                     std::cout << "Invalid choice. Please enter a valid option." << std::endl;
@@ -84,7 +85,7 @@ int main() {
         }
         case 2: {
             // Чтение английского текста из файла
-            std::ifstream inputFile("english_text.txt");
+            std::ifstream inputFile("task2.txt");
             if (!inputFile.is_open()) {
                 std::cerr << "Error opening file for reading." << std::endl;
                 return 1;
@@ -111,14 +112,14 @@ int main() {
                 }
             }
             // Вывод слов, начинающихся с гласных букв
-            std::cout << "Slova, nachinayushchiesya s glasnih:\n";
+            std::cout << "Слова, начинающиеся с гласной буквы:\n";
             for (const auto& w : vowelWords) {
                 std::cout << w << std::endl;
             }
             break;
         }
         case 3:
-            std::cout << "Exiting the program. Goodbye!" << std::endl;
+            std::cout << "Выход!" << std::endl;
             break;
         default:
             std::cout << "Invalid choice. Please enter a valid option." << std::endl;
